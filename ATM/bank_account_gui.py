@@ -9,10 +9,10 @@ class BankAccountWindow(object):
         self._master.title("BankAccount")
         self._deposit_account_name = Entry(master, text='amount of money')
         self._deposit_account_name.pack()
-        self._deposit_account_name.place(bordermode=OUTSIDE, height=20, width=200, relx=0.035, rely=0.05)
+        self._deposit_account_name.place(bordermode=OUTSIDE, relheight=0.029, width=200, relx=0.035, rely=0.05)
         self._deposit_button = Button(master, text='deposit money to your account', command=self.deposit)
         self._deposit_button.pack()
-        self._deposit_button.place(bordermode=OUTSIDE, height=20, width=200, relx=0.035, rely=0.115)
+        self._deposit_button.place(bordermode=OUTSIDE, relheight=0.029, width=200, relx=0.035, rely=0.115)
         self._text_box = Text(master)
         self._text_box.pack()
         self._text_box.place(bordermode=OUTSIDE, height=20, width=200, relx=0.035, rely=0.185)
@@ -51,18 +51,22 @@ class BankAccountWindow(object):
         self._new_account = BankAccount("yoav")
 
     def deposit(self):
+        self._text_box.delete('1.0', END)
         self._bank_account = self._new_account.deposit(int(self._deposit_account_name.get()))
         self._text_box.insert(END, "your deposit is %d \n" % self._bank_account)
 
     def withdraw(self):
+        self._text_box2.delete('1.0', END)
         self._bank_account = self._new_account.withdraw(int(self._withdraw_account_name.get()))
         self._text_box2.insert(END, "your deposit is %d \n" % self._bank_account)
 
     def get_name(self):
+        self._text_box3.delete('1.0', END)
         self._bank_account = self._new_account.get_name()
         self._text_box3.insert(END, "your name is %s \n" % self._bank_account)
 
     def get_balance(self):
+        self._text_box4.delete('1.0', END)
         self._bank_account = self._new_account.get_balance()
         self._text_box4.insert(END, "your balance is %d \n" % self._bank_account)
 
